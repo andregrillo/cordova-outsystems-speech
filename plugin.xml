@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="outsystems-plugin-speech" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>outsystems.speech</name>
+    <js-module name="speech" src="www/speech.js">
+        <clobbers target="cordova.plugins.speech" />
+    </js-module>
+    <platform name="ios">
+	  <config-file target="config.xml" parent="/*">
+	    <feature name="OSSpeech">
+	      <param name="ios-package" value="OSSpeech" />
+	    </feature>
+	  </config-file>
+	  <config-file target="*-Info.plist" parent="CFBundleURLTypes">
+		<array>
+		    <dict>
+		        <key>NSSpeechRecognitionUsageDescription</key>
+					<string>We need your permission to transcribe what you say</string>
+				<key>NSMicrophoneUsageDescription</key>
+					<string>We need access to the microphone to hear what you have to say</string>
+		    </dict>
+		</array>
+	  </config-file>
+	  <source-file src="src/ios/OutSystemsSpeech.swift" />
+	</platform>
+</plugin>
